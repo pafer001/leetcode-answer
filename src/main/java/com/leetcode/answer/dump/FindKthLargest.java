@@ -18,8 +18,59 @@ package com.leetcode.answer.dump;
  */
 public class FindKthLargest {
 
-    public int findKthLargest(int[] nums, int k) {
+    public int findKthLargest(int[] array, int k) {
+        buildHeap(array);
+        int length = array.length;
 
-        return 0;
+        while (k > 1) {
+            swap(array, length - 1, 0);
+            length--;
+
+            maxAdjust(array, 0, length);
+            k--;
+        }
+        return array[0];
+    }
+
+    public void buildHeap(int[] array) {
+
+        for (int i = array.length / 2; i >= 0; i--) {
+            maxAdjust(array, i, array.length);
+        }
+    }
+
+    public void maxAdjust(int[] array, int i, int length) {
+
+        int maxIndex = i;
+
+        int l = 2 * i + 1;
+        int r = 2 * i + 2;
+        if (l < length &&   array[l] > array[maxIndex]) {
+            maxIndex = l;
+        }
+
+        if (r < length &&  array[r] > array[maxIndex]) {
+            maxIndex = r;
+        }
+
+        if (maxIndex != i) {
+            swap(array, maxIndex, i);
+            maxAdjust(array, maxIndex, length);
+
+        }
+    }
+
+    private void swap(int[] array, int i, int j) {
+        int tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+
+    }
+
+    public static void main(String[] args) {
+
+        int[] array = {3, 2, 1, 5, 6, 4};
+        final int kthLargest = new FindKthLargest().findKthLargest(array, 2);
+        System.out.println(kthLargest);
     }
 }

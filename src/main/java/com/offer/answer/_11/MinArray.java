@@ -1,4 +1,4 @@
-package com.offer.answer._12;
+package com.offer.answer._11;
 
 
 public class MinArray {

@@ -2,7 +2,14 @@ package com.offer.answer._16;
 
 public class MyPower {
 
+    public static void main(String[] args) {
+
+        final double power = new MyPower().power(5, 10);
+        System.out.println(power);
+
+    }
     public double power(double x, int n) {
+
 
         if (x == 0) {
             return 0;

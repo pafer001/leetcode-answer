@@ -4,7 +4,7 @@ public class CuttingRope {
 
 
     public static void main(String[] args) {
-        final int i = new CuttingRope().cuttingRope(10);
+        final int i = new CuttingRope().cuttingRope(5);
         System.out.println(i);
     }
     public int cuttingRope(int n) {

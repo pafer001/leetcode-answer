@@ -1,4 +1,4 @@
-package com.offer.answer._21;
+package com.offer.answer._22;
 
 public class GetKthFromEnd {
 

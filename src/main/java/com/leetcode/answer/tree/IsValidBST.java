@@ -17,45 +17,32 @@ public class IsValidBST {
 
     public boolean isValidBST(TreeNode root) {
 
-        if (root == null ) {
+        return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    public boolean isValidBST(TreeNode root, long min, long max) {
+        if (root == null) {
             return true;
         }
 
-        boolean leftResult = true;
-        boolean rightResult = true;
-
-        if (root.left != null) {
-            if (root.val <= root.left.val) {
-                System.out.println("-left--" + root.val );
-                return false;
-            }
-            leftResult = isValidBST(root.left);
+        if (root.val <= min || root.val >= max) {
+            return false;
         }
-
-        if (root.right != null) {
-            if (root.val >= root.right.val) {
-                System.out.println("-right--" + root.val );
-
-                return false;
-            }
-            rightResult = isValidBST(root.right);
-        }
-
-        return leftResult && rightResult;
+        return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);
 
     }
 
     public static void main(String[] args) {
 
-        final TreeNode treeNode5 = new TreeNode(5);
-        final TreeNode treeNode4 = new TreeNode(4);
-        final TreeNode treeNode6 = new TreeNode(6);
-        final TreeNode treeNode3 = new TreeNode(3);
-        final TreeNode treeNode7 = new TreeNode(7);
-        treeNode5.left = treeNode4;
-        treeNode5.right = treeNode6;
-        treeNode6.left = treeNode3;
-        treeNode6.right = treeNode7;
+        final TreeNode treeNode5 = new TreeNode(2147483647);
+//        final TreeNode treeNode4 = new TreeNode(4);
+//        final TreeNode treeNode6 = new TreeNode(6);
+//        final TreeNode treeNode3 = new TreeNode(3);
+//        final TreeNode treeNode7 = new TreeNode(7);
+//        treeNode5.left = treeNode4;
+//        treeNode5.right = treeNode6;
+//        treeNode6.left = treeNode3;
+//        treeNode6.right = treeNode7;
 
         final boolean validBST = new IsValidBST().isValidBST(treeNode5);
         System.out.println(validBST);

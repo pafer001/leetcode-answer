@@ -2,6 +2,8 @@ package com.leetcode.answer.list;
 
 import com.leetcode.answer.list.base.ListNode;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class ReorderList {
@@ -19,33 +21,35 @@ public class ReorderList {
 
 
     public void reorderList(ListNode head) {
-        if(head == null || head.next == null) {
+
+        if (head == null || head.next == null) {
             return;
         }
 
-        Stack<ListNode> stack = new Stack<>();
-        ListNode pNode = head.next;
+        List<ListNode> nodeList = new ArrayList<>();
+        ListNode pNode = head;
 
-        int count = 0;
         while (pNode != null) {
-            stack.push(pNode);
+            nodeList.add(pNode);
             pNode = pNode.next;
-            count++;
         }
 
-        ListNode qNode = head;
-        pNode = stack.pop();
+        int left = 0;
+        int right = nodeList.size() - 1;
 
-        int index = 0;
-        while (!stack.isEmpty() && index <= count / 2) {
-            qNode.next = pNode.next;
-            pNode.next = qNode;
+        while (right > left) {
+            nodeList.get(left).next = nodeList.get(right);
+            left++;
 
-            qNode = qNode.next;
-            pNode = stack.pop();
-            index++;
+            if (left == right) {
+                break;
+            }
+            nodeList.get(right).next = nodeList.get(left);
+            right--;
+
         }
 
+        nodeList.get(left).next = null;
 
     }
 

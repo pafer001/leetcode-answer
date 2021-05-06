@@ -7,7 +7,7 @@ public class ReverseBetween {
 
     public static void main(String[] args) {
         ListNode _1 = new ListNode(1);
-        ListNode _2 = new ListNode(2);
+//        ListNode _2 = new ListNode(2);
 //        ListNode _3 = new ListNode(3);
 //        ListNode _4 = new ListNode(4);
 //        ListNode _5 = new ListNode(5);
@@ -15,14 +15,14 @@ public class ReverseBetween {
 //        ListNode _6 = new ListNode(6);
 
 
-        _1.next=_2;
+//        _1.next=_2;
 //        _2.next = _3;
 //        _3.next = _4;
 //        _4.next = _5;
 //        _5.next = _6;
 
 
-        ListNode listNode = new ReverseBetween().reverseBetween(_1, 1, 2);
+        ListNode listNode = new ReverseBetween().reverseBetween(_1, 1, 1);
         System.out.println(listNode);
 
     }

@@ -5,9 +5,8 @@ import java.util.LinkedList;
 public class Ysf {
 
     public static void main(String[] args) {
-//        final int ysf = new Ysf().ysf(43, 9001);
-        final int ysf = new Ysf().ysf(43, 9001);
 
+        final int ysf = new Ysf().ysf(43, 9001);
         System.out.println(ysf);
     }
 
